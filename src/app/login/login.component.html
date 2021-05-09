@@ -11,12 +11,12 @@
     <table class="shadow mb-4 rounded " cellpadding="5" cellspacing="5" style="background-color: white;">
         <tr>
             <td>
-                <input id="acno" type="text" class="form-control " (change)="ChangeAcc($event)" placeholder="Account number" [value]="account">
+                <input id="acno" type="text" class="form-control " name="accno" [(ngModel)]="accno" placeholder="Account number" >
             </td>
         </tr>
         <tr>
             <td>
-                <input id="pwd" type="password" class="form-control " (change)="ChangePswd($event)" placeholder="Password"/>
+                <input id="pwd" type="password" class="form-control " name="pswd" [(ngModel)]="pswd" placeholder="Password"/>
             </td>
         </tr>
         <tr >

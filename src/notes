@@ -20,5 +20,14 @@ Angular features
             
             3.1.2.2 Event binding using argument as $event (event)="source function call"
 
+            3.1.2.3 Event binding using Template reference #variableName
+
     
     3.2 Two way Binding
+
+        3.2.1 ngModel - FormsModule = [(ngModel)]= "binding-source"
+
+    4. Dependency Injention
+
+    5. Routing
+        

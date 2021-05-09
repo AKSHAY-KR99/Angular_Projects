@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   aim="Your Perfect Bankimg Partner"
-  account="Account Number Please"
-  accno=""
+  accno="Account Number Please"
   pswd=""
  
   AccountDetails:any = {
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     1003: { acno: 1003, pswd: "user4", blnce: 1000 , uname:"user4"},
 }
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -40,13 +40,14 @@ export class LoginComponent implements OnInit {
 
   login(){
     
-    var acno=this.accno
-    var pswd= this.pswd
+    var acno = this.accno
+    var pswd = this.pswd
 
     let dataset = this.AccountDetails
     if (acno in dataset) {
       if (pswd == dataset[acno]["pswd"]) {
         alert("login Succesfull")
+        this.router.navigateByUrl("dashboard")
       }
       else {
         alert("Invalid Password")
