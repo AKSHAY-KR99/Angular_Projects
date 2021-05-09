@@ -10,16 +10,18 @@
 <form action="">
     <table class="shadow mb-4 rounded " cellpadding="5" cellspacing="5" style="background-color: white;">
         <tr>
-            <td><input id="acno" type="text" class="form-control " placeholder="Account number" [value]="account"></td>
+            <td>
+                <input id="acno" type="text" class="form-control " (change)="ChangeAcc($event)" placeholder="Account number" [value]="account">
+            </td>
         </tr>
         <tr>
             <td>
-                <input id="pwd" type="password" class="form-control " placeholder="Password"/>
+                <input id="pwd" type="password" class="form-control " (change)="ChangePswd($event)" placeholder="Password"/>
             </td>
         </tr>
         <tr >
             <td class="p-4"><input type="button" class="form-control btn btn-primary pb-4" style="font-size: 20px;font-weight: bold;"
-                    value="Log In" onclick=""></td>
+                    value="Log In" (click)="login()"></td>
         </tr>
     </table>
 </form>

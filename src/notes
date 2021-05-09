@@ -15,5 +15,10 @@ Angular features
             3.1.1.2 Property Binding  [Binding target]="binding Source"
        
         3.1.2 View to Components
+
+            3.1.2.1 Events Binding (event)= "source function call"
+            
+            3.1.2.2 Event binding using argument as $event (event)="source function call"
+
     
     3.2 Two way Binding
