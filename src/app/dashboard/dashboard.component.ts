@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  acno=""
+  pswd=""
+  amt=""
+
+  constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
+  }
+
+  deposit(){
+
+    
+    const result = this.dataService.deposit(this.acno,this.pswd,this.amt)
+
+    if (result){
+      alert("transaction was succesful")
+    }
+    else{
+      alert("Transaction Failed")
+    }
+  }
+
+  withdraw(){
+
+    
+    const result = this.dataService.withdraw(this.acno,this.pswd,this.amt)
+
+    if (result){
+      alert("transaction was succesful")
+    }
+    else{
+      alert("Transaction Failed")
+    }
   }
 
 }

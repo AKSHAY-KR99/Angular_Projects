@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +9,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  aim="Your Perfect Bankimg Partner"
+  aim="Your Perfect Banking Partner"
   accno="Account Number Please"
   pswd=""
  
-  AccountDetails:any = {
-    1000: { acno: 1000, pswd: "user1", blnce: 5000 , uname:"user1"},
-    1001: { acno: 1001, pswd: "user2", blnce: 3000 , uname:"user2"},
-    1002: { acno: 1002, pswd: "user3", blnce: 10000 , uname:"user3"},
-    1003: { acno: 1003, pswd: "user4", blnce: 1000 , uname:"user4"},
-}
+  
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private dataService:DataService) { }
 
   ngOnInit(): void {
   }
@@ -43,19 +39,22 @@ export class LoginComponent implements OnInit {
     var acno = this.accno
     var pswd = this.pswd
 
-    let dataset = this.AccountDetails
-    if (acno in dataset) {
-      if (pswd == dataset[acno]["pswd"]) {
-        alert("login Succesfull")
-        this.router.navigateByUrl("dashboard")
-      }
-      else {
-        alert("Invalid Password")
-      }
+    
+    const result = this.dataService.login(acno,pswd);
 
+    if(result){
+      this.router.navigateByUrl("dashboard")
     }
-    else {
-      alert("Invalid Account Number, Please Register")
-    }
+
   }
+
+  register(){
+
+    // alert("Registration succesfull")
+    this.router.navigateByUrl("register")
+
+
+  }
+
+
 }
