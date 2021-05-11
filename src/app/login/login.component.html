@@ -7,16 +7,26 @@
     <div class="row mt-3" >
         <div class="col-2"></div>
         <div class="col-8 d-flex justify-content-center" >
-<form action="" (ngSubmit)="login()">
+<form [formGroup]="loginForm" (ngSubmit)="login()">
     <table class="shadow mb-4 rounded " cellpadding="5" cellspacing="5" style="background-color: white;">
         <tr>
             <td>
-                <input id="acno" type="text" class="form-control " name="accno" [(ngModel)]="accno" placeholder="Account number" >
+                <input id="acno" type="text" class="form-control " formControlName="accno" placeholder="Account number" >
             </td>
         </tr>
         <tr>
             <td>
-                <input id="pwd" type="password" class="form-control " name="pswd" [(ngModel)]="pswd" placeholder="Password"/>
+                <div *ngIf="(this.loginForm.get('accno')?.touched || this.loginForm.get('accno')?.dirty) && this.loginForm.get('accno')?.errors" class="error">Invalid Account Number</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="pwd" type="password" class="form-control " formControlName="pswd"  placeholder="Password"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div *ngIf="(this.loginForm.get('pswd')?.touched || this.loginForm.get('pswd')?.dirty) && this.loginForm.get('pswd')?.errors" class="error">invalid Password</div>
             </td>
         </tr>
         <tr >

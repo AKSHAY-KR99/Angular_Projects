@@ -1,63 +1,96 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-5 text-center">
-            <h4 >Welcome User</h4>
+            <h4 >Welcome {{dataService.currentUser}}</h4>
         </div>
     </div>
     <div class="row mt-3" >
         
         <div class="col-12 col-lg-3"></div>
         <div class="col-12 col-lg-3">
-            <form action="" (ngSubmit)=deposit()>
+            
+            <form [formGroup]="depositForm" (ngSubmit)=deposit()>
                 <table class="shadow mb-4 rounded " cellpadding="5" cellspacing="5" style="background-color: white;">
                     <tr>
-                        <td><input id="acno" type="text" class="form-control " name="acno" [(ngModel)]="acno" placeholder="Account number"/></td>
+                        <td><input id="accno" type="text" class="form-control " formControlName="accno"  placeholder="Account number"/></td>
                     </tr>
                     <tr>
                         <td>
-                            <input id="pwd" type="password" class="form-control " name="pswd" [(ngModel)]="pswd" placeholder="Password"/>
+                            <div *ngIf="(this.depositForm.get('accno')?.touched || this.depositForm.get('accno')?.dirty) && this.depositForm.get('accno')?.errors" class="error">invalid account number</div>
                         </td>
                     </tr>
-                    
                     <tr>
                         <td>
-                            <input id="amt" type="text" class="form-control " name="amt" [(ngModel)]="amt" placeholder="Amount"/>
+                            <input id="pwd" type="password" class="form-control " formControlName="pswd"  placeholder="Password"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div *ngIf="(this.depositForm.get('pswd')?.touched || this.depositForm.get('pswd')?.dirty) && this.depositForm.get('pswd')?.errors" class="error">invalid password</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="amt" type="text" class="form-control " formControlName="amt" placeholder="Amount"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div *ngIf="(this.depositForm.get('amt')?.touched || this.depositForm.get('amt')?.dirty) && this.depositForm.get('amt')?.errors" class="error">invalid account number</div>
                         </td>
                     </tr>
             
                     <tr >
-                        <td class="p1-1 pb-3"><input type="submit" class="form-control btn btn-success pb-4" style="font-size: 20px;font-weight: bold;"
+                        <td class="p1-1 pb-3"><input type="submit" class="form-control btn btn-success pb-4" style="font-size: 15px;font-weight: bold;"
                                 value="deposit"></td>
                     </tr>
                    
                 </table>
             </form>
         </div>
-        <div class="col-12 col-lg-3 d-flex justify-content-center" >
-<form action="" (ngSubmit)=withdraw()>
-    <table class="shadow mb-4 rounded " cellpadding="5" cellspacing="5" style="background-color: white;">
-        <tr>
-            <td><input id="acno" type="text" class="form-control " name="acno" [(ngModel)]="acno" placeholder="Account number"/></td>
-        </tr>
-        <tr>
-            <td>
-                <input id="pwd" type="password" class="form-control " name="pswd" [(ngModel)]="pswd" placeholder="Password"/>
-            </td>
-        </tr>
         
-        <tr>
-            <td>
-                <input id="amt" type="text" class="form-control " name="amt" [(ngModel)]="amt" placeholder="Amount"/>
-            </td>
-        </tr>
+     <div class="col-12 col-lg-3 d-flex justify-content-center" >
+         <form [formGroup]="withdrawForm" (ngSubmit)=withdraw()>
 
-        <tr >
-            <td class="p1-1 pb-3"><input type="submit" class="form-control btn btn-primary pb-4" style="font-size: 20px;font-weight: bold;"
-                    value="Withdraw"></td>
-        </tr>
-       
-    </table>
-</form>
+             <table class="shadow mb-4 rounded " cellpadding="5" cellspacing="5" style="background-color: white;">
+                <tr>
+                    <td><input id="acno" type="text" class="form-control " formControlName="accno" placeholder="Account number"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div *ngIf="(this.withdrawForm.get('accno')?.touched || this.withdrawForm.get('accno')?.dirty) && this.withdrawForm.get('accno')?.errors" class="error">Invalid Account number</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="pwd" type="password" class="form-control " formControlName="pswd"  placeholder="Password"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div *ngIf="(this.withdrawForm.get('pswd')?.touched || this.withdrawForm.get('pswd')?.dirty) && this.withdrawForm.get('pswd')?.errors" class="error">Invalid Password</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="amt" type="text" class="form-control " formControlName="amt"  placeholder="Amount"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div *ngIf="(this.withdrawForm.get('amt')?.touched || this.withdrawForm.get('amt')?.dirty) && this.withdrawForm.get('amt')?.errors" class="error">Enter correct Amount</div>
+                    </td>
+                </tr>
+
+
+                <tr >
+                    <td class="p1-1 pb-3"><input type="submit" class="form-control btn btn-primary pb-4" style="font-size: 15px;font-weight: bold;"
+                            value="Withdraw"></td>
+                </tr>
+        
+           </table>
+        </form>
+    </div>
 </div>
 <div class="col-12 col-lg-3"></div>
 </div>

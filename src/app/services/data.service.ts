@@ -11,6 +11,7 @@ export class DataService {
     1002: { acno: 1002, pswd: "user3", balance: 10000 , uname:"user3"},
     1003: { acno: 1003, pswd: "user4", balance: 1000 , uname:"user4"},
 }
+  currentUser: any;
 
   constructor() { }
 
@@ -36,8 +37,9 @@ export class DataService {
     let dataset = this.AccountDetails
     if (acno in dataset) {
       if (pswd == dataset[acno]["pswd"]) {
-        return true;
+          this.currentUser=dataset[acno]["uname"]
           alert("login Succesfull")
+          return true;
         
       }
       else {

@@ -39,4 +39,20 @@ Angular features
 
     7.2 Form Array
 
-    7.3Form Control
+    7.3 Form Control
+
+8. Angular Directives
+
+    8.1  Component Directives
+
+    8.2 structural Directives
+
+        8.2.1 *ngIf
+
+        8.2.2 *ngFor
+
+        8.2.3 *ngSwitch
+
+    8.3 Attribute Directives    
+
+        
