@@ -53,6 +53,19 @@ Angular features
 
         8.2.3 *ngSwitch
 
-    8.3 Attribute Directives    
+    8.3 Attribute Directives    (customize DOM as user wish)
+
+        8.3.1 Inbuild [ngClass]
+
+        8.3..2 User Defined
+
+9. Angular pipes
+
+    expression | pipeOperator [:Arguments]
+
+10. Angular Animations    
+
+10. HTTPClientModules, HttpClient
+        
 
         

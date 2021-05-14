@@ -1,0 +1,7 @@
+<div class="div1" [@openClose]="isOpen? 'open' : 'closed' ">
+    <h2>
+        I'm Now {{isOpen? 'open' : 'closed'}}
+    </h2>
+</div>
+
+<button (click)="toggle()" class=" mt-2 btn btn-success btn-sm clickonbutton" >click on button</button>

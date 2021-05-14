@@ -13,7 +13,29 @@ export class DataService {
 }
   currentUser: any;
 
-  constructor() { }
+  constructor() { 
+
+    this.getDeatails()
+  }
+
+  saveDetails(){
+    localStorage.setItem("AccountDetails",JSON.stringify(this.AccountDetails));
+
+    if(this.currentUser){
+      localStorage.setItem("currentUser",JSON.stringify(this.currentUser));
+    }
+  }
+
+  getDeatails(){
+    if(localStorage.getItem("AccountDetails")){
+      this.AccountDetails=JSON.parse(localStorage.getItem("AccountDetails") || '{}')
+
+    }
+    if(localStorage.getItem("currentUser")){
+      this.currentUser=JSON.parse(localStorage.getItem("currentUser") || '{}')
+      
+    }
+  }
 
   register(acno:any,pswd:any,uname:any){
     let dataset= this.AccountDetails;
@@ -25,6 +47,7 @@ export class DataService {
       dataset[acno]={
         acno,pswd,balance:0,uname
       }
+      this.saveDetails()
       return true
 
     }
@@ -39,6 +62,7 @@ export class DataService {
       if (pswd == dataset[acno]["pswd"]) {
           this.currentUser=dataset[acno]["uname"]
           alert("login Succesfull")
+          this.saveDetails()
           return true;
         
       }
@@ -67,6 +91,7 @@ export class DataService {
         
         dataset[acno]["balance"]+=amt
         alert(`Amount ${amt} credited succesfully, New Balance is ${dataset[acno]["balance"]}`)
+        this.saveDetails()
         return true;
           
         
@@ -100,6 +125,7 @@ export class DataService {
         else{
         dataset[acno]["balance"]-=amt
         alert(`Amount ${amt} debited succesfully, New Balance is ${dataset[acno]["balance"]}`)
+        this.saveDetails()
         return dataset[acno]["balance"];
       }
           
